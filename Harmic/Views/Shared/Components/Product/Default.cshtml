@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Harmic.Models.TbProduct>
 
-@foreach(var item in Model)
+@foreach(var item in Model.Take(8))
 {
     <div class="col-xl-3 col-lg-4 col-sm-6">
         <div class="product-item">

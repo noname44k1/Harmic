@@ -1632,7 +1632,7 @@
             <div class="col-lg-12">
                 <div class="swiper-container product-slider swiper-arrow with-radius border-issue">
                     <div class="swiper-wrapper">
-                        @foreach(var item in productNew.Take(3))
+                        @foreach (var item in productNew.Take(3))
                         {
                             <div class="swiper-slide">
                                 <div class="product-item">
@@ -1678,8 +1678,6 @@
                                 </div>
                             </div>
                         }
-                        
-
                     </div>
                     <!-- Add Arrows -->
                     <div class="swiper-nav-wrap">
@@ -1753,7 +1751,7 @@
             <div class="col-lg-12">
                 <div class="swiper-container product-list-slider border-issue">
                     <div class="swiper-wrapper">
-                        @foreach(var item in productNew.Take(6))
+                        @foreach (var item in productNew.Take(6))
                         {
                             <div class="swiper-slide">
                                 <div class="product-list-item">
@@ -1802,5 +1800,24 @@
 </div>
 <!-- Product Area End Here -->
 <!-- Begin Blog Area -->
-@await Component.InvokeAsync("Blog")
+<div class="blog-area section-space-y-axis-100">
+    <div class="container">
+        <div class="section-title text-center pb-55">
+            <span class="sub-title text-primary">Read Our</span>
+            <h2 class="title mb-0">Latest Blog</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="swiper-container blog-slider">
+                    <div class="swiper-wrapper">
+                        @await Component.InvokeAsync("Blog")
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Blog Area End Here -->
