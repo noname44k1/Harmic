@@ -67,13 +67,12 @@
                                 </thead>
                                 <tbody>
                                     @{
-                                        int i = 0;
+                                        int i = 1;
                                     }
                                     @foreach (var item in Model)
                                     {
-                                        { i++; }
                                         <tr>
-                                            <td>@i</td>
+                                            <td>@(i++)</td>
                                             <td>@Html.DisplayFor(modelItem => item.Title)</td>
                                             <td>@Html.DisplayFor(modelItem => item.CategoryProduct.Title)</td>
                                             <td><img src="@Html.DisplayFor(modelItem => item.Image)" width="50" hight="50"/></td>

@@ -55,19 +55,19 @@
                                         <th>Tiêu đề</th>
                                         <th>Alias</th>
                                         <th>Cấp</th>
+                                        <th>Vị trí</th>
                                         <th>Hiện</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @{
-                                        int i = 0;
+                                        int i = 1;
                                     }
                                     @foreach (var item in Model)
                                     {
-                                        { i++; }
                                         <tr>
-                                            <td>@i</td>
+                                            <td>@(i++)</td>
                                             <td>@Html.DisplayFor(modelItem => item.Title)</td>
                                             <td>@Html.DisplayFor(modelItem => item.Alias)</td>
                                             <td>@Html.DisplayFor(modelItem => item.Levels)</td>

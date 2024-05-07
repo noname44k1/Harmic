@@ -10,22 +10,22 @@ using Harmic.Models;
 namespace Harmic.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class MenusController : Controller
+    public class CategoriesController : Controller
     {
         private readonly HarmicContext _context;
 
-        public MenusController(HarmicContext context)
+        public CategoriesController(HarmicContext context)
         {
             _context = context;
         }
 
-        // GET: Admin/Menus
+        // GET: Admin/Categories
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TbMenus.ToListAsync());
+            return View(await _context.TbCategories.ToListAsync());
         }
 
-        // GET: Admin/Menus/Details/5
+        // GET: Admin/Categories/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,40 +33,39 @@ namespace Harmic.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var tbMenu = await _context.TbMenus
-                .FirstOrDefaultAsync(m => m.MenuId == id);
-            if (tbMenu == null)
+            var tbCategory = await _context.TbCategories
+                .FirstOrDefaultAsync(m => m.CategoryId == id);
+            if (tbCategory == null)
             {
                 return NotFound();
             }
 
-            return View(tbMenu);
+            return View(tbCategory);
         }
 
-        // GET: Admin/Menus/Create
+        // GET: Admin/Categories/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Menus/Create
+        // POST: Admin/Categories/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MenuId,Title,Alias,Description,Levels,ParentId,Position,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,IsActive")] TbMenu tbMenu)
+        public async Task<IActionResult> Create([Bind("CategoryId,Title,Alias,Description,Position,SeoTitle,SeoDescription,SeoKeywords,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy")] TbCategory tbCategory)
         {
             if (ModelState.IsValid)
             {
-                tbMenu.Alias = Harmic.Utilities.Function.TitleSlugGenerationAlias(tbMenu.Title);
-                _context.Add(tbMenu);
+                _context.Add(tbCategory);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(tbMenu);
+            return View(tbCategory);
         }
 
-        // GET: Admin/Menus/Edit/5
+        // GET: Admin/Categories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -74,22 +73,22 @@ namespace Harmic.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var tbMenu = await _context.TbMenus.FindAsync(id);
-            if (tbMenu == null)
+            var tbCategory = await _context.TbCategories.FindAsync(id);
+            if (tbCategory == null)
             {
                 return NotFound();
             }
-            return View(tbMenu);
+            return View(tbCategory);
         }
 
-        // POST: Admin/Menus/Edit/5
+        // POST: Admin/Categories/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MenuId,Title,Alias,Description,Levels,ParentId,Position,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,IsActive")] TbMenu tbMenu)
+        public async Task<IActionResult> Edit(int id, [Bind("CategoryId,Title,Alias,Description,Position,SeoTitle,SeoDescription,SeoKeywords,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy")] TbCategory tbCategory)
         {
-            if (id != tbMenu.MenuId)
+            if (id != tbCategory.CategoryId)
             {
                 return NotFound();
             }
@@ -98,12 +97,12 @@ namespace Harmic.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(tbMenu);
+                    _context.Update(tbCategory);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TbMenuExists(tbMenu.MenuId))
+                    if (!TbCategoryExists(tbCategory.CategoryId))
                     {
                         return NotFound();
                     }
@@ -114,10 +113,10 @@ namespace Harmic.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(tbMenu);
+            return View(tbCategory);
         }
 
-        // GET: Admin/Menus/Delete/5
+        // GET: Admin/Categories/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -125,34 +124,34 @@ namespace Harmic.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var tbMenu = await _context.TbMenus
-                .FirstOrDefaultAsync(m => m.MenuId == id);
-            if (tbMenu == null)
+            var tbCategory = await _context.TbCategories
+                .FirstOrDefaultAsync(m => m.CategoryId == id);
+            if (tbCategory == null)
             {
                 return NotFound();
             }
 
-            return View(tbMenu);
+            return View(tbCategory);
         }
 
-        // POST: Admin/Menus/Delete/5
+        // POST: Admin/Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var tbMenu = await _context.TbMenus.FindAsync(id);
-            if (tbMenu != null)
+            var tbCategory = await _context.TbCategories.FindAsync(id);
+            if (tbCategory != null)
             {
-                _context.TbMenus.Remove(tbMenu);
+                _context.TbCategories.Remove(tbCategory);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TbMenuExists(int id)
+        private bool TbCategoryExists(int id)
         {
-            return _context.TbMenus.Any(e => e.MenuId == id);
+            return _context.TbCategories.Any(e => e.CategoryId == id);
         }
     }
 }

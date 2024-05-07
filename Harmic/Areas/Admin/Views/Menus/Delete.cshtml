@@ -34,50 +34,39 @@
                         <div class="card-header">
                             <h3 class="card-title">Xoá menu</h3>
                         </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-                        
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Tiêu đề:</label>
-                                    @Html.DisplayFor(model => model.Title)
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Alias:</label>
-                                    @Html.DisplayFor(model => model.Alias)
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Cấp:</label>
-                                    @Html.DisplayFor(model => model.Levels)
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Hiện</label>
-                                    @Html.DisplayFor(model => model.IsActive)
-                                </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Tiêu đề:</label>
+                                @Html.DisplayFor(model => model.Title)
                             </div>
-                            <!-- /.card-body -->
-
-                            <div class="card-footer">
-                                <form asp-action="Delete">
-                                    <input type="hidden" asp-for="MenuId" />
-                                    <input type="submit" value="Xoá" class="btn btn-danger" /> |
-                                    <a asp-action="Index" class="btn btn-primary">Quay lại</a>
-                                </form>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Alias:</label>
+                                @Html.DisplayFor(model => model.Alias)
                             </div>
-                        
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Mô tả:</label>
+                                @Html.DisplayFor(model => model.Levels)
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Mức:</label>
+                                @Html.DisplayFor(model => model.Levels)
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Menu cha:</label>
+                                @Html.DisplayFor(model => model.Levels)
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Hiện:</label>
+                                @Html.DisplayFor(model => model.IsActive)
+                            </div>
+                            <form asp-action="Delete">
+                                <input type="hidden" asp-for="MenuId" />
+                                <input type="submit" value="Xoá" class="btn btn-danger" /> |
+                                <a asp-action="Index" class="btn btn-primary">Quay lại</a>
+                            </form>
+                        </div>
                     </div>
-                    <!-- /.card -->
-                    <!-- general form elements -->
-                    <!-- /.card -->
-                    <!-- Input addon -->
-                    <!-- /.card -->
-                    <!-- Horizontal Form -->
-                    <!-- /.card -->
-
                 </div>
-                <!--/.col (left) -->
-                <!-- right column -->
-                <!--/.col (right) -->
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->
